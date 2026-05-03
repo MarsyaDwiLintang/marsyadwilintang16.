@@ -252,7 +252,7 @@ Generic adalah fitur yang memungkinkan kita membuat class atau function yang bis
 <h2>01. Masalah Tanpa Generic</h2>
 <p>Class Box menggunakan dynamic sehingga bisa menyimpan tipe data apa saja, tetapi hal ini berisiko karena bisa menyebabkan runtime error jika tipe data tidak sesuai.</p>
 
-<h3 style="color: #00cfff; margin-top: 50px;">🔵 Analisis Keberhasilan</h3>
+<h3 style="color: #00cfff;">🔵 Analisis Keberhasilan</h3>
 <p style="color: #ccc; font-size: 0.9em;">Program berhasil dieksekusi karena tipe data yang dikirim dan diterima sudah sinkron.</p>
 
 <div class="card">
@@ -281,7 +281,7 @@ void main() {
 <button class="btn" onclick="openPopup('Tanpa generic.jpeg?run=true')">Klik Outout Success</button>
 </div>
 
-<h3 style="color: #ff4d4d; margin-top: 50px;">🔴 Analisis Kegagalan</h3>
+<h3 style="color: #ff4d4d;">🔴 Analisis Kegagalan</h3>
 <p style="color: #ccc; font-size: 0.9em;">Terjadi 'Type Error' akibat pemaksaan tipe data String ke dalam wadah Integer.</p>
 
 <div class="card">
@@ -307,7 +307,69 @@ void main() {
 </div>
 
 </div>
-<button class="btn" onclick="openPopup('error generic.jpeg?run=true')">Klik Outout Error</button>
+<button class="btn" onclick="openPopup('Tanpa generic.jpeg?run=true')">Klik Outout Error</button>
+</div>
+
+<div class="card">
+<h2>02. Solusi dengan Generic</h2>
+<p>Generic digunakan untuk menentukan tipe data sejak awal sehingga lebih aman dan menghindari kesalahan seperti pada dynamic.</p>
+
+<h3 style="color: #00cfff;">🔵 Analisis Keberhasilan</h3>
+<p style="color: #ccc; font-size: 0.9em;">tipe sudah ditentukan int, jadi data pasti angka dan aman digunakan.</p>
+
+<div class="card">
+<div class="code-box">
+
+<h3>DART SOURCE CODE</h3>
+
+<pre>
+// Nama  : Marsya Dwi Lintang
+// NIM   : 251410028
+// Kelas : SI2A
+
+class Box<T> {
+  T data;
+  Box(this.data);
+}
+
+void main() {
+  var box = Box<int>(42);
+  int value = box.data; // aman karena sesuai tipe
+  print(value);
+}
+</pre>
+
+</div>
+<button class="btn" onclick="openPopup('Tanpa generic.jpeg?run=true')">Klik Outout Success</button>
+</div>
+
+<h3 style="color: #ff4d4d;">🔴 Analisis Kegagalan</h3>
+<p style="color: #ccc; font-size: 0.9em;">Terjadi 'Type Error' akibat pemaksaan tipe data String ke dalam wadah Integer.</p>
+
+<div class="card">
+<div class="code-box">
+
+<pre>
+// Nama  : Marsya Dwi Lintang
+// NIM   : 251410028
+// Kelas : SI2A
+
+class Box<T> {
+  T data;
+  Box(this.data);
+}
+
+void main() {
+  var box = Box<int>(42);
+  box.data = "Hello"; // ERROR: String tidak bisa dimasukkan ke Box<int>
+  print(box.data);
+} 
+</pre>
+
+</div>
+
+</div>
+<button class="btn" onclick="openPopup('Tanpa generic.jpeg?run=true')">Klik Outout Error</button>
 </div>
   
 <div class="card">
