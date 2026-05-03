@@ -242,27 +242,15 @@ cursor:pointer;
 <div class="container">
 
 <div class="card">
-<h2>Pendahuluan</h2>
+<h2>Pengertian Generic</h2>
 <p>
-Generic adalah fitur dalam pemrograman yang memungkinkan pembuatan kode yang dapat digunakan untuk berbagai tipe data. Dengan generic, kita bisa membuat program yang lebih fleksibel tanpa mengorbankan keamanan tipe data.
-</p>
-</div>
-
-<div class="card">
-<h2>Review Class Modifiers</h2>
-<p>
-Sebelum masuk ke generic, terdapat beberapa modifier pada class:
-<ul>
-<li>sealed → class dengan turunan terbatas.</li>
-<li>base → hanya bisa diwariskan (extend).</li>
-<li>final → tidak bisa diwariskan lagi.</li>
-</ul>
+Generic adalah fitur yang memungkinkan kita membuat class atau function yang bisa digunakan untuk berbagai tipe data tanpa menulis ulang kode. Dengan generic, program menjadi lebih fleksibel dan aman dari kesalahan tipe data.
 </p>
 </div>
 
 <div class="card">
 <h2>01. Masalah Tanpa Generic</h2>
-<p>Penggunaan dynamic memang memberikan fleksibilitas karena dapat menampung berbagai tipe data. Namun, hal ini berisiko karena kesalahan tipe data tidak akan terdeteksi saat penulisan kode, melainkan saat program dijalankan. Akibatnya, kemungkinan terjadi error menjadi lebih besar.</p>
+<p>Class Box menggunakan dynamic sehingga bisa menyimpan tipe data apa saja, tetapi hal ini berisiko karena bisa menyebabkan runtime error jika tipe data tidak sesuai.</p>
 
 <div class="card">
 <div class="code-box">
@@ -275,16 +263,14 @@ Sebelum masuk ke generic, terdapat beberapa modifier pada class:
 // Kelas : SI2A
 
 class Box {
-  dynamic data;
+  dynamic data; // Bisa apa saja
   Box(this.data);
 }
 
 void main() {
-  var box = Box(10);
-  print("Isi awal: ${box.data}");
-
-  box.data = "Hello"; 
-  print("Setelah diubah: ${box.data}");
+  var box = Box(42);
+  int value = box.data; // aman kalau isinya int
+  print(value);
 }
 </pre>
 
