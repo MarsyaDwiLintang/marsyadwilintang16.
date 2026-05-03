@@ -376,8 +376,22 @@ void main() {
 </div>
   
 <div class="card">
-<h2>02. Studi Kasus Mixin dengan State</h2>
-<p>Mixin juga bisa memiliki state atau kondsi seperti status terbang dan berenang, sehingga tidak hanya menambahkan fungsi tetapi juga menyimpan kondisi object.</p>
+<h2>Sintaks Generic</h2>
+<p>
+Generic ditulis menggunakan tanda < > untuk menentukan tipe data yang digunakan dalam class atau function. Dengan cara ini, kita bisa menggunakan satu kode yang sama untuk berbagai tipe data tanpa harus membuat ulang.
+<ul>
+<li>T = Type</li>
+<li>E = Element (collection)</li>
+<li>K = Key</li>
+<li>V = Value</li>
+<li>R = Return type</li>
+</ul>
+</p>
+</div>
+
+<div class="card">
+<h2>03. Contoh Sintaks Generic pada class dan function</h2>
+<p>Generic tidak hanya digunakan pada class, tetapi juga bisa digunakan pada function. Dengan generic, class dan function bisa bekerja dengan berbagai tipe data tanpa harus membuat kode baru.</p>
 
 <div class="card">
 <div class="code-box">
@@ -389,79 +403,133 @@ void main() {
 // NIM   : 251410028
 // Kelas : SI2A
 
-mixin CanFly {
-  bool _isFlying = false;
-  bool get isFlying => _isFlying;
+class MyClass<T> {
+  T data;
+  MyClass(this.data);
 
-  void fly() {
-    if (!_isFlying) {
-      _isFlying = true;
-      print('Started flying!');
-    } else {
-      print('Already flying!');
-    }
-  }
-
-  void land() {
-    if (_isFlying) {
-      _isFlying = false;
-      print('Landed!');
-    } else {
-      print('Already on the ground!');
-    }
+  T getData() {
+    return data;
   }
 }
 
-mixin CanSwim {
-  bool _isSwimming = false;
-  bool get isSwimming => _isSwimming;
-
-  void swim() {
-    if (!_isSwimming) {
-      _isSwimming = true;
-      print('Started swimming!');
-    } else {
-      print('Already swimming!');
-    }
-  }
-
-  void stopSwim() {
-    if (_isSwimming) {
-      _isSwimming = false;
-      print('Stop swimming!');
-    } else {
-      print('Already on stop swimming!');
-    }
-  }
+T myFunc<T>(T value) {
+  return value;
 }
-
-class Bird with CanFly {}
-class Duck extends Bird with CanSwim {}
-class Fish with CanSwim {}
-class Airplane with CanFly {}
 
 void main() {
-  Bird bird = Bird();
-  bird.fly();
-  bird.land();
+  var myInt = MyClass<int>(10);
+  print(myInt.getData());
 
-  Duck duck = Duck();
-  duck.fly();
-  duck.swim();
+  var myString = MyClass<String>("test");
+  print(myString.getData());
 
-  Fish fish = Fish();
-  fish.swim();
+  var angka = myFunc<int>(100);
+  print(angka);
 
-  Airplane airplane = Airplane();
-  airplane.fly();
+  var teks = myFunc<String>("hello");
+  print(teks);
 }
 </pre>
 
 </div>
 
 </div>
-<button class="btn" onclick="openPopup('https://dartpad.dev/45360819f1f333ec92a3b22a8fcf960f?run=true')">Lihat DartPad</button>
+<button class="btn" onclick="openPopup('https://dartpad.dev/ee8c90892b8d7fbf5d72af5bb4834c6c?run=true')">Lihat DartPad</button>
 </div>
+
+<div class="card">
+<h2>04. Contoh Kelas Box<T></h2>
+<p>Generic memungkinkan satu class digunakan untuk berbagai tipe data. Pada Box<T>, tipe ditentukan saat objek dibuat, dan _value menyimpan data secara fleksibel.</p>
+
+<div class="card">
+<div class="code-box">
+
+<h3>DART SOURCE CODE</h3>
+
+<pre>
+// Nama  : Marsya Dwi Lintang
+// NIM   : 251410028
+// Kelas : SI2A
+
+class Box<T> {
+  T? _value;
+
+  Box(this._value);
+
+  T? get value => _value;
+
+  void setValue(T value) {
+    _value = value;
+  }
+}
+
+void main() {
+  var intBox = Box(10);
+  print('Int Box Value: ${intBox.value}');
+
+  intBox.setValue(20);
+  print('Int Box Value After Set: ${intBox.value}');
+
+  var stringBox = Box('Hello, Generic!');
+  print('String Box Value: ${stringBox.value}');
+
+  stringBox.setValue('Hello World');
+  print('String Box Value After Set: ${stringBox.value}');
+
+  var doubleBox = Box(3.14);
+  print('Double Box Value: ${doubleBox.value}');
+}
+</pre>
+
+</div>
+
+</div>
+<button class="btn" onclick="openPopup('https://dartpad.dev/945d07dd296d5db29073fbb2e0988e6c?run=true')">Lihat DartPad</button>
+</div>
+
+<div class="card">
+<h2>05. Multiple Type parameters</h2>
+<p>Generic tidak hanya menggunakan satu tipe <T>, tetapi juga bisa menggunakan lebih dari satu tipe seperti <K, V> untuk menyimpan dua data dengan tipe berbeda.</p>
+
+<div class="card">
+<div class="code-box">
+
+<h3>DART SOURCE CODE</h3>
+
+<pre>
+// Nama  : Marsya Dwi Lintang
+// NIM   : 251410028
+// Kelas : SI2A
+
+class Pair<K, V> {
+  K key;
+  V value;
+
+  Pair(this.key, this.value);
+}
+
+void main() {
+  
+  var pair1 = Pair("age", 19);
+  print("Key: ${pair1.key}");
+  print("Value: ${pair1.value}");
+
+  var pair2 = Pair("Name", "Dwi");
+  print("Key: ${pair2.key}");
+  print("Value: ${pair2.value}");
+
+  var pair3 = Pair(1, 2.71);
+  print("Key: ${pair3.key}");
+  print("Value: ${pair3.value}");
+}
+</pre>
+
+</div>
+
+</div>
+<button class="btn" onclick="openPopup('https://dartpad.dev/bb49172dec979bc7259a0af43b93893d?run=true')">Lihat DartPad</button>
+</div>
+
 
 <div class="card">
 <h2>Pengantar Class Modifiers</h2>
