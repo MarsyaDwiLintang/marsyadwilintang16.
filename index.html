@@ -6,6 +6,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>Generic Dasar</title>
+
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 
 <style>
@@ -739,6 +741,99 @@ void main() {
 
 </div>
 <button class="btn" onclick="openPopup('error interface.jpeg?run=true')">Klik Outout Error</button>
+</div>
+
+<div class="card">
+<h2>10. Pembatasan Tipe dengan Class Abstract</h2>
+<p>Pembatasan tipe dengan class abstract adalah cara membatasi tipe data pada generic agar hanya bisa menggunakan class tertentu atau turunannya. Pada contoh ini digunakan T extends Animal, artinya hanya class yang mewarisi Animal yang boleh dipakai.</p>
+
+<h3 style="color: #00cfff; margin-top: 50px;">🔵 Analisis Keberhasilan</h3>
+<p style="color: #ccc; font-size: 0.9em;">Program berhasil dijalankan karena tipe data yang digunakan sesuai dengan batasan T extends Animal, yaitu memakai turunan seperti Dog dan Cat.</p>
+
+<div class="card">
+<div class="code-box">
+
+<h3>DART SOURCE CODE</h3>
+
+<pre>
+// Nama  : Marsya Dwi Lintang
+// NIM   : 251410028
+// Kelas : SI2A
+
+abstract class Animal {
+  void makeSound();
+}
+
+class Dog implements Animal {
+  @override
+  void makeSound() {
+    print('Woof!');
+  }
+}
+
+class Cat implements Animal {
+  @override
+  void makeSound() {
+    print('Meow!');
+  }
+}
+
+// Generic + pembatasan tipe
+class AnimalCage<T extends Animal> {
+  T animal;
+
+  AnimalCage(this.animal);
+
+  void sound() {
+    animal.makeSound();
+  }
+}
+
+void main() {
+  var dogCage = AnimalCage(Dog());
+  dogCage.sound(); // Woof!
+
+  var catCage = AnimalCage(Cat());
+  catCage.sound(); // Meow!
+}
+</pre>
+
+</div>
+<button class="btn" onclick="openPopup('class abstract.jpeg?run=true')">Klik Outout Success</button>
+</div>
+
+<h3 style="color: #ff4d4d; margin-top: 50px;">🔴 Analisis Kegagalan</h3>
+<p style="color: #ccc; font-size: 0.9em;">Program gagal dijalankan karena tipe data tidak sesuai dengan batasan, yaitu menggunakan String yang bukan turunan dari Animal.</p>
+
+<div class="card">
+<div class="code-box">
+
+<pre>
+// Nama  : Marsya Dwi Lintang
+// NIM   : 251410028
+// Kelas : SI2A
+
+abstract class Animal {
+  void makeSound();
+}
+
+// Tetap pakai pembatasan tipe
+class AnimalCage<T extends Animal> {
+  T animal;
+
+  AnimalCage(this.animal);
+}
+
+void main() {
+  var stringCage = AnimalCage<String>('test'); // ERROR
+}
+
+</pre>
+
+</div>
+
+</div>
+<button class="btn" onclick="openPopup('error class abstract.jpeg?run=true')">Klik Outout Error</button>
 </div>
 
 <div class="card">
