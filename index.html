@@ -235,7 +235,7 @@ cursor:pointer;
 <body>
 
 <header>
-<h1>IMPLEMENTASI GENERIC DALAM PEMROGRAMAN DART</h1>
+<h1>Generic Dasar</h1>
 <p>Marsya Dwi Lintang | 251410028 | SI2A</p>
 </header>
 
@@ -376,7 +376,7 @@ void main() {
 </div>
   
 <div class="card">
-<h2>Sintaks Generic</h2>
+<h2>Sintaks Generic Dasar</h2>
 <p>
 Generic ditulis menggunakan tanda < > untuk menentukan tipe data yang digunakan dalam class atau function. Dengan cara ini, kita bisa menggunakan satu kode yang sama untuk berbagai tipe data tanpa harus membuat ulang.
 <ul>
@@ -629,6 +629,118 @@ void main() {
 
 </div>
 <button class="btn" onclick="openPopup('error extends.jpeg.png?run=true')">Klik Outout Error</button>
+</div>
+
+<div class="card">
+<h2>08. Type Inference (Inferensi Tipe)</h2>
+<p>Pada Dart, type inference adalah kemampuan untuk menentukan tipe data secara otomatis berdasarkan nilai yang diberikan. Pada myFunc(10), tipe T otomatis menjadi int, dan pada myFunc("test"), tipe T menjadi string.</p>
+
+<div class="card">
+<div class="code-box">
+
+<h3>DART SOURCE CODE</h3>
+
+<pre>
+// Nama  : Marsya Dwi Lintang
+// NIM   : 251410028
+// Kelas : SI2A
+
+T myFunc<T>(T value) {
+  return value;
+}
+
+void main() {
+  var intValue = myFunc(10); 
+  print(intValue.runtimeType); 
+
+  var stringValue = myFunc("test"); 
+  print(stringValue.runtimeType);
+}
+</pre>
+
+</div>
+
+</div>
+<button class="btn" onclick="openPopup('https://dartpad.dev/05f83c2965310857118250909b2719f3?run=true')">Lihat DartPad</button>
+</div>
+
+<div class="card">
+<h2>Pembatasan Tipe dan manfaatnya</h2>
+<p>
+Pada Dart, pembatasan tipe digunakan untuk memastikan bahwa generic hanya menerima tipe data tertentu yang sesuai.
+<ul>
+<li>Manfaatnya:</li>
+<li>Mencegah kesalahan tipe data (lebih aman).</li>
+<li>Membuat kode lebih jelas dan mudah dibaca.</li>
+<li>Memastikan hanya tipe yang sesuai yang bisa digunakan.</li>
+<li>Membantu penulisan kode lebih terstruktur.</li>
+</ul>
+</p>
+</div>
+
+<div class="card">
+<h2>09. Pembatasan Tipe pada Interface dan Class</h2>
+<p>Pada Dart, pembatasan tipe pada interface dan class digunakan untuk membatasi tipe data generice agar hanya menerima tipe tertentu. Hal ini dilakukan dengan menggunakan extends, sehingga hanya class atau interface yang sesuai yang bisa digunakan.</p>
+
+<h3 style="color: #00cfff; margin-top: 50px;">🔵 Analisis Keberhasilan</h3>
+<p style="color: #ccc; font-size: 0.9em;">Pada Dart, T extends Interable berarti hanya tipe data yang bisa di-interasi (seperti List dan Set)yang diperolehkan. Karena sesuai, program berhasil dijalankna.</p>
+
+<div class="card">
+<div class="code-box">
+
+<h3>DART SOURCE CODE</h3>
+
+<pre>
+// Nama  : Marsya Dwi Lintang
+// NIM   : 251410028
+// Kelas : SI2A
+
+void printIterable<T extends Iterable<dynamic>>(T iterable) {
+  for (var item in iterable) {
+    print(item);
+  }
+}
+
+void main() {
+  printIterable<List<int>>([1, 2, 3]); 
+  // Output: 1 2 3
+
+  printIterable<Set<String>>({'apple', 'banana'}); 
+  // Output: apple banana
+}
+</pre>
+
+</div>
+<button class="btn" onclick="openPopup('interface.jpeg?run=true')">Klik Outout Success</button>
+</div>
+
+<h3 style="color: #ff4d4d; margin-top: 50px;">🔴 Analisis Kegagalan</h3>
+<p style="color: #ccc; font-size: 0.9em;">Terjadi error karena menggunakan String, sedangkan T extends num hanya mengizinkan tipe data numerik. String tidak termasuk, sehingga program gagal dijalankan.</p>
+
+<div class="card">
+<div class="code-box">
+
+<pre>
+// Nama  : Marsya Dwi Lintang
+// NIM   : 251410028
+// Kelas : SI2A
+
+void printIterable(dynamic iterable) {
+  for (var item in iterable) { 
+    print(item);
+  }
+}
+
+void main() {
+  printIterable(10); 
+}
+
+</pre>
+
+</div>
+
+</div>
+<button class="btn" onclick="openPopup('error interface.jpeg?run=true')">Klik Outout Error</button>
 </div>
 
 <div class="card">
