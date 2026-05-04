@@ -530,12 +530,105 @@ void main() {
 <button class="btn" onclick="openPopup('https://dartpad.dev/bb49172dec979bc7259a0af43b93893d?run=true')">Lihat DartPad</button>
 </div>
 
+<div class="card">
+<h2>06. Menggabungkan dua nilai dengan tipe data yang berbeda.</h2>
+<p>Generic function bisa memakai dua tipe <T, U> untuk menggabungkan dua nilai dengan tipe berbeda.</p>
 
 <div class="card">
-<h2>Pengantar Class Modifiers</h2>
-<p>
-Class Modifiers yang digunakan untuk mengontrol bagaimana calss digunakan, terutama dalam hal inheritance dan keamanan struktur kode, seperti sealed, base, dan final.
-</p>
+<div class="code-box">
+
+<h3>DART SOURCE CODE</h3>
+
+<pre>
+// Nama  : Marsya Dwi Lintang
+// NIM   : 251410028
+// Kelas : SI2A
+
+String combine<T, U>(T value1, U value2) {
+  return '$value1, $value2';
+}
+
+void main() {
+  var result1 = combine<String, int>('Number is', 10);
+  print(result1); // Output: Number is, 10
+
+  var result2 = combine<int, double>(10, 20.5);
+  print(result2); // Output: 10, 20.5
+}
+</pre>
+
+</div>
+
+</div>
+<button class="btn" onclick="openPopup('https://dartpad.dev/36aca83cfe25f4a57b2a05987d193511?run=true')">Lihat DartPad</button>
+</div>
+
+<div class="card">
+<h2>07. Generic dengan extends.</h2>
+<p>Generic dengan extends digunakan untuk membatasi tipe data yang dapat digunakan pada parameter generic.</p>
+
+<h3 style="color: #00cfff; margin-top: 50px;">🔵 Analisis Keberhasilan</h3>
+<p style="color: #ccc; font-size: 0.9em;">Pada Dart, T extends num membatasi bahwa tipe data hanya boleh int atau double. Karena yang digunakan sesuai, maka program berhasil dijalankan.</p>
+
+<div class="card">
+<div class="code-box">
+
+<h3>DART SOURCE CODE</h3>
+
+<pre>
+// Nama  : Marsya Dwi Lintang
+// NIM   : 251410028
+// Kelas : SI2A
+
+class NumberBox<T extends num> {
+  T value;
+
+  NumberBox(this.value);
+
+  T getValue() {
+    return value;
+  }
+}
+
+void main() {
+  var intBox = NumberBox<int>(10);
+  print("int box value: ${intBox.getValue()}");
+
+  var doubleBox = NumberBox<double>(3.14);
+  print("double box value: ${doubleBox.getValue()}");
+}
+</pre>
+
+</div>
+<button class="btn" onclick="openPopup('geric extends.jpeg?run=true')">Klik Outout Success</button>
+</div>
+
+<h3 style="color: #ff4d4d; margin-top: 50px;">🔴 Analisis Kegagalan</h3>
+<p style="color: #ccc; font-size: 0.9em;">Terjadi error karena menggunakan String, sedangkan T extends num hanya mengizinkan tipe data numerik. String tidak termasuk, sehingga program gagal dijalankan.</p>
+
+<div class="card">
+<div class="code-box">
+
+<pre>
+// Nama  : Marsya Dwi Lintang
+// NIM   : 251410028
+// Kelas : SI2A
+
+class NumberBox<T extends num> {
+  T value;
+
+  NumberBox(this.value);
+}
+
+void main() {
+  var stringBox = NumberBox<String>("test"); // ERROR
+}
+</pre>
+
+</div>
+
+</div>
+<button class="btn" onclick="openPopup('error extends.jpeg.png?run=true')">Klik Outout Error</button>
 </div>
 
 <div class="card">
