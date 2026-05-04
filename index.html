@@ -984,8 +984,8 @@ Generic adalah cara membuat kode yang bisa digunakan untuk berbagai tipe data de
 </div>
 
 <div class="card">
-<h2>03. Sealed Class</h2>
-<p>Sealed Class hanya bisa diwariskan dalam file yang sama sehingga lebih aman dan semua subclass dapat dikontrol.</p>
+<h2>Latihan</h2>
+<p>Latihan ini bertujuan untuk memahami penggunaan generic dalam berbagai bentuk. Class Stack<T> digunakan untuk menyimpan data dengan konsep tumpukan (LIFO), dengan method push, pop, dan peek. Fungsi mergeLists<T> digunakan untuk menggabungkan dua list dengan tipe data yang sama. Sedangkan class Response<T> digunakan sebagai wadah data yang fleksibel, yang bisa menyimpan hasil (data) atau pesan error dengan berbagai tipe.</p>
 
 <div class="card">
 <div class="code-box">
@@ -997,443 +997,56 @@ Generic adalah cara membuat kode yang bisa digunakan untuk berbagai tipe data de
 // NIM   : 251410028
 // Kelas : SI2A
 
-sealed class ApiResponse {}
+class Stack<T> {
+  final List<T> _items = [];
 
-class Success extends ApiResponse {
-  final String message;
-  Success(this.message);
+  void push(T value) {
+    _items.add(value);
+  }
+
+  T pop() {
+    return _items.removeLast();
+  }
+
+  T peek() {
+    return _items.last;
+  }
 }
 
-class Error extends ApiResponse {
-  final String errorMessage;
-  Error(this.errorMessage);
+List<T> mergeLists<T>(List<T> a, List<T> b) {
+  return [...a, ...b];
+}
+
+class Response<T> {
+  T? data;
+  String? error;
+
+  Response({this.data, this.error});
 }
 
 void main() {
-  // contoh penggunaan sederhana
-  ApiResponse res1 = Success("Berhasil");
-  ApiResponse res2 = Error("Gagal");
+  // Stack
+  var stack = Stack<int>();
+  stack.push(10);
+  stack.push(20);
+  print(stack.peek()); // 20
+  print(stack.pop());  // 20
 
-  print(res1);
-  print(res2);
+  // Merge Lists
+  var hasil = mergeLists([1, 2], [3, 4]);
+  print(hasil);
+
+  // Response
+  var res = Response<String>(data: "Berhasil");
+  print(res.data);
 }
 </pre>
 
 </div>
 
 </div>
-<button class="btn" onclick="openPopup('sealed class.jpeg')">Lihat Capture</button>
+<button class="btn" onclick="openPopup('https://dartpad.dev/809debcb102a9e0cebde52070dff67e6?run=true')">Lihat DartPad</button>
 </div>
-
-<div class="card">
-<h2>04. Keuntungan Sealed Class</h2>
-<p>Sealed Class memudahkan pengecekan kondisi karena semua kemungkinan subclass sudah diketahui, sehingga lebih aman saat digunkan dengan if atau switch.</p>
-
-<div class="card">
-<div class="code-box">
-
-<h3>DART SOURCE CODE</h3>
-
-<pre>
-// Nama  : Marsya Dwi Lintang
-// NIM   : 251410028
-// Kelas : SI2A
-
-sealed class ApiResponse {}
-
-class Success extends ApiResponse {
-  final String message;
-  Success(this.message);
-}
-
-class Error extends ApiResponse {
-  final String errorMessage;
-  Error(this.errorMessage);
-}
-
-void handleResponse(ApiResponse response) {
-  if (response is Success) {
-    print("Success: ${response.message}");
-  } else if (response is Error) {
-    print("Error: ${response.errorMessage}");
-  }
-}
-
-void main() {
-  handleResponse(Success("Data berhasil"));
-  handleResponse(Error("Terjadi kesalahan"));
-}
-</pre>
-
-</div>
-
-</div>
-<button class="btn" onclick="openPopup('keuntungan sealed class.jpeg')">Lihat Capture</button>
-</div>
-
-<div class="card">
-<h2>05. Base Class</h2>
-<p>Base Class digunakan untuk membatasi inheritance, di mana calss hanya boleh diwariskan dengan extends sehingga struktur tetap terkontrol.</p>
-
-<div class="card">
-<div class="code-box">
-
-<h3>DART SOURCE CODE</h3>
-
-<pre>
-// Nama  : Marsya Dwi Lintang
-// NIM   : 251410028
-// Kelas : SI2A
-
-base class Animal {
-  void speak() {
-    print("Hewan mengeluarkan suara");
-  }
-}
-
-base class Dog extends Animal {
-  @override
-  void speak() {
-    print("Anjing menggonggong ");
-  }
-}
-
-void main() {
-  Animal animal = Animal();
-  animal.speak();
-
-  Animal dog = Dog();
-  dog.speak();
-}
-</pre>
-
-</div>
-
-</div>
-<button class="btn" onclick="openPopup('base class.jpeg')">Lihat Capture</button>
-</div>
-
-<div class="card">
-<h2>06. Kapan Menggunakan Base Class</h2>
-<p>Penggunaan base calss sebagai class dasar yang bisa diturunkan, seperti Animal yang diturunakan menjadi Dog dan Cat agar perilaku tetap terstruktur</p>
-
-<div class="card">
-<div class="code-box">
-
-<h3>DART SOURCE CODE</h3>
-
-<pre>
-// Nama  : Marsya Dwi Lintang
-// NIM   : 251410028
-// Kelas : SI2A
-
-base class Animal {
-  void speak() {
-    print("Animal sound");
-  }
-}
-
-base class Dog extends Animal {
-  @override
-  void speak() {
-    print("Woof!");
-  }
-}
-
-base class Cat extends Animal {
-  @override
-  void speak() {
-    print("Meow!");
-  }
-}
-
-void main() {
-  Animal dog = Dog();
-  dog.speak();
-
-  Animal cat = Cat();
-  cat.speak();
-}
-</pre>
-
-</div>
-
-</div>
-<button class="btn" onclick="openPopup('kapan menggunakan base class.jpeg')">Lihat Capture</button>
-</div>
-
-<div class="card">
-<h2>07. Final Class</h2>
-<p>Final Class tidak bisa diwariskan sehingga hanya digunakan langsung untuk objek.</p>
-
-<div class="card">
-<div class="code-box">
-
-<h3>DART SOURCE CODE</h3>
-
-<pre>
-// Nama  : Marsya Dwi Lintang
-// NIM   : 251410028
-// Kelas : SI2A
-
-final class Settings {
-  final String theme;
-  final int fontSize;
-
-  Settings({required this.theme, required this.fontSize});
-
-  void showSettings() {
-    print("Theme: ${theme}, Font Size: ${fontSize}");
-  }
-}
-
-void main() {
-  Settings settings = Settings(theme: "Dark", fontSize: 14);
-  settings.showSettings();
-}
-</pre>
-
-</div>
-
-</div>
-<button class="btn" onclick="openPopup('final class.jpeg')">Lihat Capture</button>
-</div>
-
-<div class="card">
-<h2>Perbandingan Class Modifiers</h2>
-<ul>
-<li>Sealed Class, digunakan untuk membatasi subclass hanya dalam satu file, sehigga semua turunan calss bisa dikontrol dan lebih aman.</li>
-<li>Base Class, digunakan sebagai calss dasar yang masih boleh diwariskan, tetapi tetap dengan aturan tertentu agar struktru tetap terjaga.</li>
-<li>Final Class, tidak bisa diwarisakan sama sekali, sehingga hanya bisa digunakan langsung tanpa adanya turunan.</li>
-</ul>
-</div>
-
-<div class="card">
-<h2>08. Praktik 1 Sealed Class dengan Pattern Matching</h2>
-<p>Slide ini menggunakan fungsi handleStatus untuk menangani berbagai kondisi dari Status, lalu dipanggil di dalam main().</p>
-<div class="card">
-<div class="code-box">
-
-<h3>DART SOURCE CODE</h3>
-
-<pre>
-// Nama  : Marsya Dwi Lintang
-// NIM   : 251410028
-// Kelas : SI2A
-
-sealed class Status {}
-
-class Loading extends Status {}
-
-class Success extends Status {
-  String data;
-  Success(this.data);
-}
-
-class Error extends Status {
-  String message;
-  Error(this.message);
-}
-
-void handleStatus(Status status) {
-  switch (status) {
-    case Loading():
-      print("App sedang loading...");
-    case Success(:var data):
-      print("User: $data");
-    case Error(:var message):
-      print("Gagal: $message");
-  }
-}
-
-void main() {
-  handleStatus(Loading());
-  handleStatus(Success("Login berhasil"));
-  handleStatus(Error("Koneksi gagal"));
-}
-</pre>
-
-</div>
-
-</div>
-<button class="btn" onclick="openPopup('https://dartpad.dev/8cee2614265b8ed05d19bee5e0101f42?run=true')">Lihat DartPad</button>
-</div>
-
-<div class="card">
-<h2>09. Studi Kasus Sistem State Management</h2>
-<p>Menggunakan sealed class status untuk merepresentasikan kondisi aplikasi seperti loading, success, dan eror. Setiap kondisi ditangani menggunakan fungsi handleStatus dengan switch (pattern matching) agar program dapat merespons sesuai keadaan.</p>
-<div class="card">
-<div class="code-box">
-
-<h3>DART SOURCE CODE</h3>
-
-<pre>
-//Nama : Marsya Dwi Lintang
-//NIM  : 251410028
-//Kelas: SI2A
-
-sealed class AppState {}
-
-class LoadingState extends AppState {}
-
-class SuccessState extends AppState {
-  final String data;
-  SuccessState(this.data);
-}
-
-class ErrorState extends AppState {
-  final String message;
-  ErrorState(this.message);
-}
-
-void handleState(AppState state) {
-  switch (state) {
-    case LoadingState():
-      print("Loading...");
-    case SuccessState(:var data):
-      print("Success: $data");
-    case ErrorState(:var message):
-      print("Error: $message");
-  }
-}
-
-void main() {
-  handleState(LoadingState());
-  handleState(SuccessState("Data berhasil"));
-  handleState(ErrorState("Terjadi error"));
-}
-</pre>
-
-</div>
-
-</div>
-<button class="btn" onclick="openPopup('https://dartpad.dev/8ce2f7d645ca8fa81d4d2780abe61ed9?run=true')">Lihat DartPad</button>
-</div>        
-
-<div class="card">
-<h2>Ringkasan & Best Practices</h2>
-<p>
-Menggunakan sealed class AppState untuk merepresentasikan kondisi aplikasi seperti loading, success, dan error. Setiap kondisi diproses menggunakan switch di handleState, sehingga program dapat merespons sesuai keadaan.
-<ul>
-<li>Gunakan sealed class untuk memastikan semua kemungkinan state sudah terdefinisi.</li>
-<li>Gunakan nama class yang jelas seperti LoadingState, SuccessState, dan ErrorState.</li>
-<li>Gunakan switch (pattern matching) agar penanganan state lebih rapi dan aman.</li>
-<li>Pisahkan logika (handleState) dari main() agar kode lebih terstruktur. Gunakan final pada variabel untuk menjaga data tidak berubah.</li>
-</ul>
-</p>
-</div>
-  
-<div class="card">
-<h2>10. Bonus Base Class Repository</h2>
-<p>Menunjukkan konsep inheritance, di mana class ProductRepository mewarisi dan mengubah method dari Repository sesuai kebutuhan.</p>
-<div class="card">
-<div class="code-box">
-
-<h3>DART SOURCE CODE</h3>
-
-<pre>
-//Nama : Marsya Dwi Lintang
-//NIM  : 251410028
-//Kelas: SI2A
-
-class Repository {
-  void create(String data) {
-    print("Menambahkan data: $data");
-  }
-
-  void read() {
-    print("Menampilkan semua data");
-  }
-
-  void update(String data) {
-    print("Mengubah data menjadi: $data");
-  }
-
-  void delete(String data) {
-    print("Menghapus data: $data");
-  }
-}
-
-class ProductRepository extends Repository {
-  @override
-  void create(String data) {
-    print("Produk berhasil ditambahkan: $data");
-  }
-
-  @override
-  void read() {
-    print("Daftar semua produk ditampilkan");
-  }
-
-  @override
-  void update(String data) {
-    print("Produk berhasil diperbarui: $data");
-  }
-
-  @override
-  void delete(String data) {
-    print("Produk berhasil dihapus: $data");
-  }
-}
-
-void main() {
-  var repo = ProductRepository();
-
-  repo.create("Laptop");
-  repo.read();
-  repo.update("Laptop Gaming");
-  repo.delete("Laptop");
-}
-</pre>
-
-</div>
-
-</div>
-<button class="btn" onclick="openPopup('bonus1.jpeg')">Lihat Capture</button>
-</div>        
-
-<div class="card">
-<h2>11. Bonus Final Class Mathutils.</h2>
-<p>Penggunaan utility class Mathutils dengan method static untuk operasi matematika tanpa perlu membuat object.</p>
-<div class="card">
-<div class="code-box">
-
-<h3>DART SOURCE CODE</h3>
-
-<pre>
-//Nama : Marsya Dwi Lintang
-//NIM  : 251410028
-//Kelas: SI2A
-
-class MathUtils {
-  static int tambah(int a, int b) => a + b;
-
-  static int kurang(int a, int b) => a - b;
-
-  static int kali(int a, int b) => a * b;
-
-  static double bagi(int a, int b) {
-    if (b == 0) {
-      print("Error: tidak bisa dibagi 0");
-      return 0;
-    }
-    return a / b;
-  }
-}
-
-void main() {
-  print("Tambah: ${MathUtils.tambah(8, 2)}");
-  print("Kurang: ${MathUtils.kurang(8, 2)}");
-  print("Kali: ${MathUtils.kali(8, 2)}");
-  print("Bagi: ${MathUtils.bagi(8, 2)}");
-}
-</pre>
-
-</div>
-
-</div>
-<button class="btn" onclick="openPopup('bonus2.jpeg')">Lihat Capture</button>
-</div>        
 
 <!-- POPUP -->
 
