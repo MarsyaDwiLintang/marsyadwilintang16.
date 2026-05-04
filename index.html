@@ -905,15 +905,12 @@ void main() {
 
 <div class="card">
 <h2>Generic vs Dynamic vs Object</h2>
-<p>
 <ul>
 <li>Generic, Tipe data sudah ditentukan sejak awal, sehingga lebih aman dan tidak perlu konversi saat digunakan.</li>
 <li>Dynamic, Tipe data bisa berubah-ubah, fleksibel digunakan, tetapi berisiko error saat program berjalan.</li>
 <li>Object, Bisa menyimpan berbagai tipe data, namun perlu penyesuaian tipe (casting) saat digunakan.</li>
 </ul>
-</p>
 
-<div class="card">
 <div class="code-box">
 
 <pre>
@@ -922,6 +919,7 @@ Box box1 = Box(42);   // Generic: aman
 dynamic box2 = 42;   // Dynamic: tidak aman
 Object box3 = 42;   // Object: perlu casting
 </pre>
+
 </div>
 </div>
 
@@ -978,6 +976,13 @@ void main() {
 
 </div>
 <button class="btn" onclick="openPopup('https://dartpad.dev/bac3177af8cf6403df80e313861b973e?run=true')">Lihat DartPad</button>
+</div>
+
+<div class="card">
+<h2>Ringkasan</h2>
+<p>
+Generic adalah cara membuat kode yang bisa digunakan untuk berbagai tipe data dengan tetap aman (type-safe), digunakan pada class, function, dan collection agar lebih fleksibel; Dart juga meimilki type inference untuk menebak tipe secara otomatis serta constraints untuk membatasi tipe data sesuai kebutuhan.
+</p>
 </div>
 
 <div class="card">
