@@ -924,6 +924,61 @@ Object box3 = 42;   // Object: perlu casting
 </div>
 
 <div class="card">
+<h2>11. Studi Kasus - Cache Generic</h2>
+<p>Cache Generic adalah tempat penyimpanan data sementara yang bisa digunakan untuk berbagai tipe data tanpa harus membuat class berbeda-beda.</p>
+
+<div class="card">
+<div class="code-box">
+
+<h3>DART SOURCE CODE</h3>
+
+<pre>
+// Nama  : Marsya Dwi Lintang
+// NIM   : 251410028
+// Kelas : SI2A
+
+class Cache<T> {
+  final Map<String, T> _storage = {};
+
+  void set(String key, T value) {
+    _storage[key] = value;
+  }
+
+  T get(String key) {
+    return _storage[key] as T;
+  }
+
+  void remove(String key) {
+    _storage.remove(key);
+  }
+}
+
+class Product {
+  String name;
+  int price;
+
+  Product(this.name, this.price);
+}
+
+void main() {
+  var userCache = Cache<String>();
+  userCache.set('name', 'Lintang');
+
+  var productCache = Cache<Product>();
+  productCache.set('p1', Product('Laptop', 1000));
+
+  print(userCache.get('name'));
+  print(productCache.get('p1').name);
+}
+</pre>
+
+</div>
+
+</div>
+<button class="btn" onclick="openPopup('https://dartpad.dev/bac3177af8cf6403df80e313861b973e?run=true')">Lihat DartPad</button>
+</div>
+
+<div class="card">
 <h2>03. Sealed Class</h2>
 <p>Sealed Class hanya bisa diwariskan dalam file yang sama sehingga lebih aman dan semua subclass dapat dikontrol.</p>
 
