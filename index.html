@@ -778,7 +778,6 @@ class Cat implements Animal {
   }
 }
 
-// Generic + pembatasan tipe
 class AnimalCage<T extends Animal> {
   T animal;
 
@@ -799,7 +798,7 @@ void main() {
 </pre>
 
 </div>
-<button class="btn" onclick="openPopup('class abstract.jpeg?run=true')">Klik Outout Success</button>
+<button class="btn" onclick="openPopup('ubah class.jpeg?run=true')">Klik Outout Success</button>
 </div>
 
 <h3 style="color: #ff4d4d; margin-top: 50px;">🔴 Analisis Kegagalan</h3>
@@ -817,7 +816,6 @@ abstract class Animal {
   void makeSound();
 }
 
-// Tetap pakai pembatasan tipe
 class AnimalCage<T extends Animal> {
   T animal;
 
@@ -833,7 +831,7 @@ void main() {
 </div>
 
 </div>
-<button class="btn" onclick="openPopup('error class abstract.jpeg?run=true')">Klik Outout Error</button>
+<button class="btn" onclick="openPopup('ubah error class.jpeg?run=true')">Klik Outout Error</button>
 </div>
 
 <div class="card">
