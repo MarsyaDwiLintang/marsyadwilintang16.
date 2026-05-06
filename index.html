@@ -252,7 +252,7 @@ Generic adalah fitur yang memungkinkan kita membuat class atau function yang bis
 <h2>01. Masalah Tanpa Generic</h2>
 <p>Class Box menggunakan dynamic sehingga bisa menyimpan tipe data apa saja, tetapi hal ini berisiko karena bisa menyebabkan runtime error jika tipe data tidak sesuai.</p>
 
-<h3 style="color: #00cfff; margin-top: 50px;">🔵 Analisis Keberhasilan</h3>
+<h3 style="color: #00cfff; margin-top: 50px;">🔵 Success</h3>
 <p style="color: #ccc; font-size: 0.9em;">Program berhasil dieksekusi karena tipe data yang dikirim dan diterima sudah sinkron.</p>
 
 <div class="card">
@@ -278,10 +278,10 @@ void main() {
 </pre>
 
 </div>
-<button class="btn" onclick="openPopup('Tanpa generic.jpeg?run=true')">Klik Output Success</button>
+<button class="btn" onclick="openPopup('Tanpa generic.jpeg?run=true')">Klik Outout Success</button>
 </div>
 
-<h3 style="color: #ff4d4d; margin-top: 50px;">🔴 Analisis Kegagalan</h3>
+<h3 style="color: #ff4d4d; margin-top: 50px;">🔴 Error</h3>
 <p style="color: #ccc; font-size: 0.9em;">Terjadi 'Type Error' akibat pemaksaan tipe data String ke dalam wadah Integer.</p>
 
 <div class="card">
@@ -307,14 +307,14 @@ void main() {
 </div>
 
 </div>
-<button class="btn" onclick="openPopup('error generic.jpeg?run=true')">Klik Output Error</button>
+<button class="btn" onclick="openPopup('error generic.jpeg?run=true')">Klik Outout Error</button>
 </div>
 
 <div class="card">
 <h2>02. Solusi dengan Generic</h2>
 <p>Generic digunakan untuk menentukan tipe data sejak awal sehingga lebih aman dan menghindari kesalahan seperti pada dynamic.</p>
 
-<h3 style="color: #00cfff; margin-top: 50px;">🔵 Analisis Keberhasilan</h3>
+<h3 style="color: #00cfff; margin-top: 50px;">🔵 Success</h3>
 <p style="color: #ccc; font-size: 0.9em;">tipe sudah ditentukan int, jadi data pasti angka dan aman digunakan.</p>
 
 <div class="card">
@@ -340,10 +340,10 @@ void main() {
 </pre>
 
 </div>
-<button class="btn" onclick="openPopup('dengan generic.jpeg?run=true')">Klik Output Success</button>
+<button class="btn" onclick="openPopup('dengan generic.jpeg?run=true')">Klik Outout Success</button>
 </div>
 
-<h3 style="color: #ff4d4d; margin-top: 50px;">🔴 Analisis Kegagalan</h3>
+<h3 style="color: #ff4d4d; margin-top: 50px;">🔴 Error</h3>
 <p style="color: #ccc; font-size: 0.9em;">Error terjadi karena tipe data pada generic sudah ditentukan sejak awal. Pada Box<String>, data yang boleh disimpan hanya bertipe String. Sehingga ketika dimasukkan tipe lain seperti int, akan terjadi error.</p>
 
 <div class="card">
@@ -372,7 +372,7 @@ void main() {
 </div>
 
 </div>
-<button class="btn" onclick="openPopup('error generic2.jpeg?run=true')">Klik Output Error</button>
+<button class="btn" onclick="openPopup('error generic2.jpeg?run=true')">Klik Outout Error</button>
 </div>
   
 <div class="card">
@@ -567,7 +567,7 @@ void main() {
 <h2>07. Generic dengan extends.</h2>
 <p>Generic dengan extends digunakan untuk membatasi tipe data yang dapat digunakan pada parameter generic.</p>
 
-<h3 style="color: #00cfff; margin-top: 50px;">🔵 Analisis Keberhasilan</h3>
+<h3 style="color: #00cfff; margin-top: 50px;">🔵 Success</h3>
 <p style="color: #ccc; font-size: 0.9em;">Pada Dart, T extends num membatasi bahwa tipe data hanya boleh int atau double. Karena yang digunakan sesuai, maka program berhasil dijalankan.</p>
 
 <div class="card">
@@ -600,10 +600,10 @@ void main() {
 </pre>
 
 </div>
-<button class="btn" onclick="openPopup('geric extends.jpeg?run=true')">Klik Output Success</button>
+<button class="btn" onclick="openPopup('geric extends.jpeg?run=true')">Klik Outout Success</button>
 </div>
 
-<h3 style="color: #ff4d4d; margin-top: 50px;">🔴 Analisis Kegagalan</h3>
+<h3 style="color: #ff4d4d; margin-top: 50px;">🔴 Error</h3>
 <p style="color: #ccc; font-size: 0.9em;">Terjadi error karena menggunakan String, sedangkan T extends num hanya mengizinkan tipe data numerik. String tidak termasuk, sehingga program gagal dijalankan.</p>
 
 <div class="card">
@@ -628,7 +628,7 @@ void main() {
 </div>
 
 </div>
-<button class="btn" onclick="openPopup('error extends.jpeg.png?run=true')">Klik Output Error</button>
+<button class="btn" onclick="openPopup('error extends.jpeg.png?run=true')">Klik Outout Error</button>
 </div>
 
 <div class="card">
@@ -682,7 +682,7 @@ Pada Dart, pembatasan tipe digunakan untuk memastikan bahwa generic hanya meneri
 <h2>09. Pembatasan Tipe pada Interface dan Class</h2>
 <p>Pada Dart, pembatasan tipe pada interface dan class digunakan untuk membatasi tipe data generice agar hanya menerima tipe tertentu. Hal ini dilakukan dengan menggunakan extends, sehingga hanya class atau interface yang sesuai yang bisa digunakan.</p>
 
-<h3 style="color: #00cfff; margin-top: 50px;">🔵 Analisis Keberhasilan</h3>
+<h3 style="color: #00cfff; margin-top: 50px;">🔵 Success</h3>
 <p style="color: #ccc; font-size: 0.9em;">Pada Dart, T extends Interable berarti hanya tipe data yang bisa di-interasi (seperti List dan Set)yang diperolehkan. Karena sesuai, program berhasil dijalankna.</p>
 
 <div class="card">
@@ -711,10 +711,10 @@ void main() {
 </pre>
 
 </div>
-<button class="btn" onclick="openPopup('interface.jpeg?run=true')">Klik Output Success</button>
+<button class="btn" onclick="openPopup('interface.jpeg?run=true')">Klik Outout Success</button>
 </div>
 
-<h3 style="color: #ff4d4d; margin-top: 50px;">🔴 Analisis Kegagalan</h3>
+<h3 style="color: #ff4d4d; margin-top: 50px;">🔴 Error</h3>
 <p style="color: #ccc; font-size: 0.9em;">Terjadi error karena menggunakan String, sedangkan T extends num hanya mengizinkan tipe data numerik. String tidak termasuk, sehingga program gagal dijalankan.</p>
 
 <div class="card">
@@ -740,14 +740,14 @@ void main() {
 </div>
 
 </div>
-<button class="btn" onclick="openPopup('error interface.jpeg?run=true')">Klik Output Error</button>
+<button class="btn" onclick="openPopup('error interface.jpeg?run=true')">Klik Outout Error</button>
 </div>
 
 <div class="card">
 <h2>10. Pembatasan Tipe dengan Class Abstract</h2>
 <p>Pembatasan tipe dengan class abstract adalah cara membatasi tipe data pada generic agar hanya bisa menggunakan class tertentu atau turunannya. Pada contoh ini digunakan T extends Animal, artinya hanya class yang mewarisi Animal yang boleh dipakai.</p>
 
-<h3 style="color: #00cfff; margin-top: 50px;">🔵 Analisis Keberhasilan</h3>
+<h3 style="color: #00cfff; margin-top: 50px;">🔵 Success</h3>
 <p style="color: #ccc; font-size: 0.9em;">Program berhasil dijalankan karena tipe data yang digunakan sesuai dengan batasan T extends Animal, yaitu memakai turunan seperti Dog dan Cat.</p>
 
 <div class="card">
@@ -798,10 +798,10 @@ void main() {
 </pre>
 
 </div>
-<button class="btn" onclick="openPopup('ubah class.jpeg?run=true')">Klik Output Success</button>
+<button class="btn" onclick="openPopup('ubah class.jpeg?run=true')">Klik Outout Success</button>
 </div>
 
-<h3 style="color: #ff4d4d; margin-top: 50px;">🔴 Analisis Kegagalan</h3>
+<h3 style="color: #ff4d4d; margin-top: 50px;">🔴 Error </h3>
 <p style="color: #ccc; font-size: 0.9em;">Program gagal dijalankan karena tipe data tidak sesuai dengan batasan, yaitu menggunakan String yang bukan turunan dari Animal.</p>
 
 <div class="card">
@@ -831,7 +831,7 @@ void main() {
 </div>
 
 </div>
-<button class="btn" onclick="openPopup('ubah error class.jpeg?run=true')">Klik Output Error</button>
+<button class="btn" onclick="openPopup('ubah error class.jpeg?run=true')">Klik Outout Error</button>
 </div>
 
 <div class="card">
